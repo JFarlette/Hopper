@@ -1,0 +1,69 @@
+﻿<Window x:Class="HopperDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hoppers" Height="450" Width="525" Loaded="Window_Loaded" >
+    <DockPanel  LastChildFill="True" >
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                <Label HorizontalAlignment="Left" Content="Task:"/>
+                <ComboBox x:Name="m_taskCombo" Width="129"  SelectionChanged="m_taskCombo_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Color}" Width="16" Height="16" Margin="0,2,5,2" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                
+                </ComboBox>
+                <Button x:Name="Next" Content="Next" Click="m_next_Click"/>
+            </StackPanel>
+            <TextBlock Text="{Binding Path=GameStatus, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" FontSize="20" ></TextBlock>
+        </DockPanel>
+        <Button x:Name="m_undo" DockPanel.Dock="Left" Click="m_undo_Click">Undo</Button>
+        <Button x:Name="m_redo" DockPanel.Dock="Right" Click="m_redo_Click">Redo</Button>
+        <StackPanel x:Name="m_jumpedPanel" DockPanel.Dock="Bottom" Orientation="Horizontal" Background="LightBlue">
+            <!--<Ellipse Height="20" Width="20" Fill="Green" Margin="5"/>
+            <Ellipse Height="20" Width="20" Fill="Green" Margin="5"/>
+            <Ellipse Height="20" Width="20" Fill="Green" Margin="5"/>
+            <Ellipse Height="20" Width="20" Fill="Green" Margin="5"/>
+            <Ellipse Height="20" Width="20" Fill="Green" Margin="5"/>-->
+        </StackPanel>
+        <Canvas x:Name="PondCanvas" Background="LightBlue" SizeChanged="PondCanvas_SizeChanged">
+
+            <!--<Canvas x:Name="LilyPadA" Canvas.Left="58" Canvas.Top="58">
+            <Ellipse x:Name="PadA" MouseDown="Pad_MouseDown" Fill="Green" HorizontalAlignment="Left" Height="50" Canvas.Left="3" Canvas.Top="3" Stroke="ForestGreen" VerticalAlignment="Top" Width="50"/>
+            <Ellipse x:Name="PadB" MouseDown="Pad_MouseDown" Fill="LightBlue" HorizontalAlignment="Left" Height="20" Canvas.Left="33" Canvas.Top="33" Stroke="LightBlue" VerticalAlignment="Top" Width="20"/>
+            </Canvas>-->
+
+            <!--<Ellipse x:Name="PadA" MouseDown="Pad_MouseDown" Fill="Green" HorizontalAlignment="Left" Height="43.2" Margin="112.4,55.6,0,0" Stroke="ForestGreen" VerticalAlignment="Top" Width="45.6"/>
+        
+    	<Ellipse x:Name="HalloD" Fill="#FF3C52CE"  Height="53.6" Margin="176.933,119.734,0,0" Stroke="#FF9CA617" VerticalAlignment="Top" Width="52.4" StrokeThickness="3"/>
+        
+    	<Ellipse x:Name="HalloA" Fill="#FF3C52CE" HorizontalAlignment="Left" Height="53.6" Margin="108.933,49.6,0,0" Stroke="#FFA62917" VerticalAlignment="Top" Width="52.4" StrokeThickness="3"/>
+    	
+    	<Ellipse x:Name="PadB" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="244.4,55.6,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadC" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="369.2,55.6,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadD" MouseDown="Pad_MouseDown" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="180.4,125.2,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadE" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="314,125.2,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadF" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="112.4,185.2,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadG" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="244.4,185.2,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadH" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="369.2,185.2,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadI" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="180.4,254.4,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadJ" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="314,254.4,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadK" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="112.4,314.4,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadL" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="244.4,314.4,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Ellipse x:Name="PadM" Fill="#FF55ED58" HorizontalAlignment="Left" Height="43.2" Margin="369.2,314.4,0,0" Stroke="LightGreen" VerticalAlignment="Top" Width="45.6"/>
+    	<Canvas x:Name="Frog" Margin="120,64.533,367.533,332.267">
+    		<Ellipse x:Name="FrogFace" Fill="#FF0E2FEC" HorizontalAlignment="Left" Height="25.2" Stroke="#FF9CA617" StrokeThickness="0" VerticalAlignment="Top" Width="31.067"/>
+    		<Ellipse Fill="#FFD1D5EF" HorizontalAlignment="Left" Height="7.467" Stroke="#FF9CA617" StrokeThickness="0" VerticalAlignment="Top" Width="9.067" Canvas.Left="6.4" Canvas.Top="5.867"/>
+    		<Ellipse Fill="#FFD1D5EF" HorizontalAlignment="Left" Height="7.467" Stroke="#FF9CA617" StrokeThickness="0" VerticalAlignment="Top" Width="9.067" RenderTransformOrigin="2.235,1.857" Canvas.Left="15.467" Canvas.Top="5.867"/>
+    		<Path Data="M126.4,82.867 L144.534,83.733333" Fill="#FFE6E7F0" HorizontalAlignment="Left" Height="0.866" Stretch="Fill" Stroke="#FFE6E7F0" VerticalAlignment="Top" Width="18.134" Canvas.Left="6.4" Canvas.Top="18.334"/>
+        
+    	</Canvas>-->
+
+        </Canvas>
+
+    </DockPanel>
+</Window>
