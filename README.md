@@ -1,0 +1,1 @@
+A simple implementation of Thinkfun's Hoppers peg solitaire game implemented in .NET/WPF
