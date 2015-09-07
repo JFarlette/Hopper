@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HopperConsole", "Hopper\HopperConsole.csproj", "{C3994430-C58B-4FC8-AB1B-A7B124494D8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HopperConsole", "HopperConsole\HopperConsole.csproj", "{C3994430-C58B-4FC8-AB1B-A7B124494D8E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HopperEngine", "HopperEngine\HopperEngine.csproj", "{CD029DA1-06C4-4456-AECF-080ABBF0A4F8}"
 EndProject

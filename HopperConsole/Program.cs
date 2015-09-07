@@ -5,14 +5,19 @@ using System.Text;
 using HopperEngine;
 using System.Diagnostics;
 
-namespace Hopper
+namespace HopperConsole
 {
     class Program
     {
         static string sm_Help =
+            "Legend:\n" +
+            "\n" +
+            "    [ ] = Selected frog\n" +
+            "    < > = Jump option\n" +
+            "\n" +
             "Commands:\n" +
             "\n" +
-            "   (S)elect <pad>        Selects a pad; pad must contain a frog.\n" +
+            "   (S)elect <pad>        Selects a pad; pad must contain a frog; selected frog has square brackets around it.\n" +
             "   (J)umpto <pad>        Jump the selected frog to the specified pad; must be an empty pad with a green frog on the pad between the two pads.\n" +
             "   (T)ask <#>            Switches to the specified task number.\n" +
             "   (U)ndo                Undoes the last jump; must have been at least one jump already completed.\n" +
@@ -101,7 +106,7 @@ namespace Hopper
         // Stack should be managed by HopperEngine
         static void DrawStack()
         {
-            Console.Write("[ ");
+            Console.Write("Undo/Redo: [ ");
             foreach (Hop hop in sm_manager.HopStack.Undos())
             {
                 Console.Write("({0} <- {1}) ", hop.StartPad, hop.EndPad);
