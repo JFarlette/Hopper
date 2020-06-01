@@ -21,7 +21,7 @@ namespace HopperConsole
             "   (J)umpto <pad>        Jump the selected frog to the specified pad; must be an empty pad with a green frog on the pad between the two pads.\n" +
             "   (T)ask <#>            Switches to the specified task number.\n" +
             "   (U)ndo                Undoes the last jump; must have been at least one jump already completed.\n" +
-            "   (R)edo                Redoes the last jump; must be at least one jump ondone already.\n" +
+            "   (R)edo                Redoes the last jump; must be at least one jump undone already.\n" +
             "   (D)emo                Demo the solution.\n" +
             "   (N)ext                Skips to next task.\n" +
             "   (Q)uit                Bye bye!!";
@@ -30,7 +30,7 @@ namespace HopperConsole
 
         static void DrawHeader()
         {
-            Console.Write(String.Format(@"Task: {0} ({1} of {2})    Difficulty:  ", sm_manager.GetTaskName(), sm_manager.GetTaskNumber()+1, sm_manager.GetTotalTasks()));
+            Console.Write(String.Format(@"Task: {0} (of {1})    Difficulty:  ", sm_manager.GetTaskName(), sm_manager.GetTotalTasks()));
             Task.Level difficulty = sm_manager.GetTaskLevel();
             switch (difficulty)
             {
@@ -59,7 +59,7 @@ namespace HopperConsole
             Console.WriteLine(@"        \     / | \     /  ");
             Console.WriteLine(@"      |  \   /  |  \   /  |");
             Console.WriteLine(@"      |   \ /   |   \ /   |");
-                 Console.Write("      |  "); RenderPadInColor('D'); Console.Write("  |  "); RenderPadInColor('E'); Console.Write("  |"); Console.WriteLine();
+                Console.Write(@"      |  "); RenderPadInColor('D'); Console.Write("  |  "); RenderPadInColor('E'); Console.Write("  |"); Console.WriteLine();
             Console.WriteLine(@"      |   / \   |   / \   |");
             Console.WriteLine(@"      |  /   \  |  /   \  |");
             Console.WriteLine(@"        /     \ | /     \  ");

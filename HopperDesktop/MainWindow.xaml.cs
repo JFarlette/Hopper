@@ -88,7 +88,7 @@ namespace HopperDesktop
             {
                 TaskInfo ti = new TaskInfo();
                 ti.Number = t;
-                ti.Name = String.Format("{0} ({1} of {2})", m_manager.GetTaskName(t), t + 1, total);
+                ti.Name = String.Format("{0} (of {1})", m_manager.GetTaskName(t), total);
                 switch (m_manager.GetTaskLevel(t))
                 {
                     case HopperEngine.Task.Level.Beginner: ti.Color = Brushes.Green; break;
