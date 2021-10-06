@@ -17,3 +17,4 @@ namespace HopperEngine
         public char EndPad;
     }
 }
+
