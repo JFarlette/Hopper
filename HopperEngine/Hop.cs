@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HopperEngine
 {
-    public class Hop
+    public class Hop  // A hop from one pad to another
     {
         public Hop(char startPad, char endPad)
         {
